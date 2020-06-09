@@ -8,13 +8,13 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="57.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="수정" />
-            <Button mnemonicParsing="false" text="완료" />
+            <Button fx:id="btnModf" mnemonicParsing="false" text="수정" />
+            <Button fx:id="btnComp" mnemonicParsing="false" text="완료" />
          </children>
       </HBox>
    </bottom>
