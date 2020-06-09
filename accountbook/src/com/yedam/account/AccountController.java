@@ -54,7 +54,7 @@ public class AccountController implements Initializable {
 				e.printStackTrace();
 			}
 			// 각 필드 초기화.
-			selectDate.setValue("공개");
+			selectDate.setValue(null);
 			selectList.setText(null);
 			txtPrice.setText(null);
 
