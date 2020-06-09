@@ -8,11 +8,19 @@ import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 public class AccountController implements Initializable {
+	@FXML DatePicker selectDate;
+	@FXML TextField txtPrice, selectList;
+	@FXML Button btnInput, btnList, btnEnd; 
+		
 	Connection conn;
-
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -22,18 +30,16 @@ public class AccountController implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
 		String sql = "insert into board(exit_date date, list, price) " + "value(?,?,?)";
-		
 		try {
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, );
-			pst.setString(2, );
-			pst.setInt(3, );
+			pst.setString(1, selectDate.getValue().format(formatter));
+			pst.setString(2, selectList.getText());
+			pst.setInt(3, Integer.parseInt(txtPrice.getText()));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 }
