@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <center>
+      <TableView prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="75.0" text="날짜" />
+          <TableColumn prefWidth="75.0" text="목록" />
+            <TableColumn prefWidth="75.0" text="금액" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="입력" />
+            <Button mnemonicParsing="false" text="취소" />
+            <Button mnemonicParsing="false" text="삭제" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
