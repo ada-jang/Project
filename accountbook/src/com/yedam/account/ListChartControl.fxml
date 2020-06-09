@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="357.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="357.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <TableView prefHeight="400.0" prefWidth="278.0" BorderPane.alignment="CENTER">
         <columns>
@@ -17,7 +17,7 @@
       </TableView>
    </left>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="75.0" prefWidth="478.0" spacing="150.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="611.0" spacing="150.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" text="이전" />
             <Button mnemonicParsing="false" text="종료" />
@@ -25,17 +25,18 @@
       </HBox>
    </bottom>
    <right>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <AreaChart>
-               <xAxis>
-                  <CategoryAxis side="BOTTOM" />
-               </xAxis>
-               <yAxis>
-                  <NumberAxis side="LEFT" />
-               </yAxis>
-            </AreaChart>
-         </children>
-      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </right>
+   <center>
+   <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AreaChart prefHeight="330.0" prefWidth="262.0" BorderPane.alignment="CENTER">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </AreaChart>
+      </HBox>
+   </center>
 </BorderPane>
