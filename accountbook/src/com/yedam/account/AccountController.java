@@ -76,7 +76,7 @@ public class AccountController implements Initializable {
 		stageList.initOwner(btnList.getScene().getWindow());
 			
 		try {
-			Parent parent = FXMLLoader.load(getClass().getResource("ListChartControl.fxml"));
+			Parent parent = FXMLLoader.load(getClass().getResource("EditControl.fxml"));
 			Scene scene = new Scene(parent);
 			stageList.setScene(scene);
 			stageList.setResizable(false);
