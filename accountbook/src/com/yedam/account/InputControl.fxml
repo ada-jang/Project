@@ -12,9 +12,9 @@
       <Label fx:id="list" layoutX="91.0" layoutY="81.0" text="목록" />
       <Label fx:id="price" layoutX="91.0" layoutY="114.0" text="가격" />
       <TextField fx:id="txtList" layoutX="138.0" layoutY="77.0" prefHeight="23.0" prefWidth="163.0" />
-      <TextField fx:id="txtPrice" layoutX="138.0" layoutY="110.0" />
+      <TextField fx:id="txtPrice" layoutX="138.0" layoutY="110.0" /> 				
       <Button fx:id="btnInput" layoutX="273.0" layoutY="174.0" text="입력" onAction="#handleBtnInputAction" />
-      <Button fx:id="btnList" layoutX="167.0" layoutY="174.0" text="리스트" />
+      <Button fx:id="btnList" layoutX="167.0" layoutY="174.0" text="리스트" onAction="#handleBtnListAction"/>
       <Button fx:id="btnEnd" layoutX="73.0" layoutY="174.0" text="종료"  onAction="#handleBtnEndAction"/>
       <DatePicker fx:id="selectDate" layoutX="138.0" layoutY="44.0" />
       <Separator layoutX="93.0" layoutY="148.0" prefWidth="200.0" />
