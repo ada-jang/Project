@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,12 +16,15 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class AccountController implements Initializable {
-	@FXML DatePicker selectDate;
-	@FXML TextField txtPrice, selectList;
-	@FXML Button btnInput, btnList, btnEnd; 
-		
+	@FXML
+	DatePicker selectDate;
+	@FXML
+	TextField txtPrice, selectList;
+	@FXML
+	Button btnInput, btnList, btnEnd;
+
 	Connection conn;
-		
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -30,16 +34,31 @@ public class AccountController implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public void handleBtnRegAction(ActionEvent e) {
+		if (selectDate.getValue() == null || selectDate.getValue().equals("")) {
+			
+		} else if (selectList.getText() == null || selectList.getText().equals("")) {
+			
+		} else if (txtPrice.getText() == null || txtPrice.getText().equals("")) {
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
-		String sql = "insert into board(exit_date date, list, price) " + "value(?,?,?)";
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, selectDate.getValue().format(formatter));
-			pst.setString(2, selectList.getText());
-			pst.setInt(3, Integer.parseInt(txtPrice.getText()));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} else {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
+			String sql = "insert into board(exit_date date, list, price) " + "value(?,?,?)";
+			try {
+				PreparedStatement pst = conn.prepareStatement(sql);
+				pst.setString(1, selectDate.getValue().format(formatter));
+				pst.setString(2, selectList.getText());
+				pst.setInt(3, Integer.parseInt(txtPrice.getText()));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			// 각 필드 초기화.
+			selectDate.setValue(null);
+			selectList.setText(null);
+			txtPrice.setText(null);
+
+
+		} // end of if..
 	}
 }
