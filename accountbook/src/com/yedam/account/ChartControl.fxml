@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="357.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="52.0" prefWidth="592.0" spacing="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnPrev" mnemonicParsing="false" text="이전" />
+            <Button fx:id="btnEnd" mnemonicParsing="false" text="종료" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+   <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <children>
+            <BarChart fx:id="barChart" prefHeight="330.0" prefWidth="290.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         <AreaChart fx:id="areaChart" prefHeight="330.0" prefWidth="290.0" BorderPane.alignment="CENTER">
+            <xAxis>
+               <CategoryAxis side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+               <NumberAxis side="LEFT" />
+            </yAxis>
+         </AreaChart>
+      </children>
+      </HBox>
+   </center>
+</BorderPane>
