@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +20,7 @@ public class AccountController implements Initializable {
 	@FXML
 	DatePicker selectDate;
 	@FXML
-	TextField txtPrice, selectList;
+	TextField txtPrice, txtList;
 	@FXML
 	Button btnInput, btnList, btnEnd;
 
@@ -35,30 +36,32 @@ public class AccountController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	public void handleBtnRegAction(ActionEvent e) {
+	public void handleBtnInputAction(ActionEvent e) {
 		if (selectDate.getValue() == null || selectDate.getValue().equals("")) {
 			
-		} else if (selectList.getText() == null || selectList.getText().equals("")) {
+		} else if (txtList.getText() == null || txtList.getText().equals("")) {
 			
 		} else if (txtPrice.getText() == null || txtPrice.getText().equals("")) {
 		
 		} else {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
-			String sql = "insert into board(exit_date date, list, price) " + "value(?,?,?)";
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+			System.out.println(selectDate.getValue().format(formatter));
+			String sql = "insert into accountbook(exit_date, list, price) " + " values(?,?,?)";
 			try {
 				PreparedStatement pst = conn.prepareStatement(sql);
 				pst.setString(1, selectDate.getValue().format(formatter));
-				pst.setString(2, selectList.getText());
+				pst.setString(2, txtList.getText());
 				pst.setInt(3, Integer.parseInt(txtPrice.getText()));
-			} catch (SQLException e) {
-				e.printStackTrace();
+				
+				int r = pst.executeUpdate();
+				System.out.println(r + "입력 되었습니다.");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
 			}
-			// 각 필드 초기화.
-			selectDate.setValue(null);
-			selectList.setText(null);
-			txtPrice.setText(null);
-
 
 		} // end of if..
+	}
+	public void handleBtnEndAction(ActionEvent e) {
+		Platform.exit();
 	}
 }
