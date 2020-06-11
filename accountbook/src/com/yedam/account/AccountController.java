@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -30,6 +31,8 @@ public class AccountController implements Initializable {
 	TextField txtPrice, txtList;
 	@FXML
 	Button btnInput, btnList, btnEnd;
+	@FXML
+	TableView<Board> tableView;
 
 	Connection conn;
 
@@ -53,20 +56,19 @@ public class AccountController implements Initializable {
 
 		} else {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-			System.out.println(selectDate.getValue().format(formatter));
 			String sql = "insert into accountbook(exit_date, list, price) " + " values(?,?,?)";
 			try {
 				PreparedStatement pst = conn.prepareStatement(sql);
 				pst.setString(1, selectDate.getValue().format(formatter));
 				pst.setString(2, txtList.getText());
 				pst.setInt(3, Integer.parseInt(txtPrice.getText()));
-			
+
 				int r = pst.executeUpdate();
-				System.out.println(r + "입력 되었습니다.");
+				System.out.println("입력 되었습니다.");
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			
+
 		} // end of insert
 	}
 
@@ -74,25 +76,33 @@ public class AccountController implements Initializable {
 		Stage stageList = new Stage(StageStyle.DECORATED);
 		stageList.initModality(Modality.WINDOW_MODAL);
 		stageList.initOwner(btnList.getScene().getWindow());
-			
+
 		try {
-			Parent parent = FXMLLoader.load(getClass().getResource("EditControl.fxml"));
+			Parent parent = FXMLLoader.load(getClass().getResource("ListControl.fxml"));
 			Scene scene = new Scene(parent);
 			stageList.setScene(scene);
 			stageList.setResizable(false);
 			stageList.show();
-			
-			
-			
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		
-	} //end of list
-	
-	public void handleBtnChartAction(ActionEvent e) {
 		
-	} //end of Chart
+		String sql = "select * from accountbook";
+		
+//		TableColumn<Board, ?> tcexitDate = tableView.getColumns().get(0);
+//		tcexitDate.setCellValueFactory(new PropertyValueFactory("exitDate"));
+//		TableColumn<Board, ?> tclist = tableView.getColumns().get(1);
+//		tclist.setCellValueFactory(new PropertyValueFactory("list"));
+//		TableColumn<Board, ?> tcprice = tableView.getColumns().get(2);
+//		tcprice.setCellValueFactory(new PropertyValueFactory("price"));
+//		tableView.setItems(null);
+		
+	} // end of list
+
+	public void handleBtnChartAction(ActionEvent e) {
+
+	} // end of Chart
 
 	public void handleBtnEndAction(ActionEvent e) {
 		Platform.exit();
