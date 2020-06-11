@@ -10,8 +10,8 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="52.0" prefWidth="592.0" spacing="150.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnPrev" mnemonicParsing="false" text="이전" />
-            <Button fx:id="btnEnd" mnemonicParsing="false" text="종료" />
+            <Button fx:id="btnPrev" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0" text="이전" />
+            <Button fx:id="btnEnd" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0" text="종료" />
          </children>
       </HBox>
    </bottom>

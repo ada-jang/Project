@@ -1,29 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="230.0" prefWidth="352.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.yedam.account.AccountController">
-	<children>
-		<Label fx:id="date" layoutX="54.0" layoutY="37.0" text="날짜" />
-		<Label fx:id="list" layoutX="54.0" layoutY="70.0" text="목록" />
-		<Label fx:id="price" layoutX="54.0" layoutY="103.0" text="가격" />
-		<TextField fx:id="txtPrice" layoutX="104.0" layoutY="104.0"
-			prefHeight="23.0" prefWidth="163.0" />
-		<TextField fx:id="txtList" layoutX="104.0" layoutY="66.0" />
-		<Button fx:id="btnInput" layoutX="58.0" layoutY="174.0"
-			text="입력" onAction="#handleBtnInputAction" />
-		<Button fx:id="btnList" layoutX="147.0" layoutY="174.0"
-			text="리스트" onAction="#handleBtnListAction" />
-		<Button fx:id="btnEnd" layoutX="247.0" layoutY="174.0"
-			text="종료" onAction="#handleBtnEndAction" />
-		<DatePicker fx:id="selectDate" layoutX="104.0"
-			layoutY="33.0" />
-		<Separator layoutX="48.0" layoutY="149.0" prefHeight="3.0"
-			prefWidth="257.0" />
-	</children>
+<AnchorPane fx:id="anchorPane" prefHeight="375.0" prefWidth="489.0" stylesheets="@InputControl.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+		fx:controller="com.yedam.account.AccountController">
+   <children>
+      <VBox fx:id="root" alignment="CENTER" prefHeight="69.0" prefWidth="489.0">
+         <children>
+            <Label fx:id="ActBkTxt" alignment="CENTER" prefHeight="70.0" prefWidth="352.0" text="Account Book">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="67.0" layoutY="69.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+         <children>
+            <Label fx:id="list" styleClass="label" text="목록" />
+            <TextField fx:id="txtList" prefHeight="23.0" prefWidth="193.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="65.0" layoutY="130.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+         <children>
+            <Label fx:id="price" styleClass="label" text="가격" />
+            <TextField fx:id="txtPrice" prefHeight="23.0" prefWidth="193.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="65.0" layoutY="188.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+         <children>
+            <Label fx:id="date" styleClass="label" text="날짜" />
+            <DatePicker fx:id="selectDate" prefHeight="23.0" prefWidth="193.0" />
+         </children>
+      </HBox>
+      <Separator layoutX="44.0" layoutY="256.0" prefHeight="2.0" prefWidth="406.0" />
+      <HBox alignment="CENTER" layoutX="33.0" layoutY="256.0" prefHeight="111.0" prefWidth="423.0" spacing="40.0">
+         <children>
+            <Button fx:id="btnInput" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="입력" onAction="#handleBtnInputAction"/>
+            <Button fx:id="btnEnd" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="종료" onAction="#handleBtnListAction"/>
+            <Button fx:id="btnList" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="리스트" onAction="#handleBtnEndAction"/>
+            <Button fx:id="btnChart" mnemonicParsing="false" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="차트" />
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>
