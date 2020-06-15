@@ -41,12 +41,12 @@ public class AccountController implements Initializable {
 	Connection conn;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
-	ObservableList<Board> accountList;
+	ObservableList<Board> data;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		accountList = FXCollections.observableArrayList();
+		data = FXCollections.observableArrayList();
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, "hr", "hr");
@@ -95,13 +95,13 @@ public class AccountController implements Initializable {
 			String sql = "select * from accountbook";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, "hr", "hr");
-			System.out.println("디비 리스트 접속");
+			System.out.println("Database list 접속");
 			pst = conn.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
 
 				Board accountlist = new Board(rs.getString("list"), rs.getInt("price"), rs.getString("exit_date"));
-				accountList.add(accountlist);
+				data.add(accountlist);
 				
 			}
 //			System.out.println(accountList.get(0).getList());
@@ -112,7 +112,7 @@ public class AccountController implements Initializable {
 			tclist.setCellValueFactory(new PropertyValueFactory("list"));
 			TableColumn<Board, ?> tcprice = TableColumn.getColumns().get(2);
 			tcprice.setCellValueFactory(new PropertyValueFactory("price"));
-			TableColumn.setItems(accountList);
+			TableColumn.setItems(data);
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}

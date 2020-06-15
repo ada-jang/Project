@@ -41,6 +41,8 @@ public class LoginController implements Initializable {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			 con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.95:1521:xe", "hr", "hr");
+//			 con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.3:1521:xe", "hr", "hr");
+		
 			System.out.println("연결");
 		} catch (ClassNotFoundException | SQLException ex) {
 			System.err.println("ConnectionUtil : " + ex.getMessage());
