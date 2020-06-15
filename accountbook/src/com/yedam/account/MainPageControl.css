@@ -1,15 +1,15 @@
 #anchorPane {
-/* 	-fx-background-image: url("images/3.jpg"); */
+	-fx-background-image: url("images/p.jpg");
 /*	-fx-background-position: center;	*/
 	-fx-background-color: black;
-	-fx-background-size: 500px;
+	-fx-background-size: 600px;
 }
 
 #ActBkTxt {
 	-fx-font-size:25;
 	-fx-font-family: "Arial Black";
 	-fx-font-weight: bold;
-	-fx-text-fill: linear-gradient(to bottom, white, darkorange);
+	-fx-text-fill: linear-gradient(to bottom, white, black);
 }
 
 #btnInput {
@@ -24,6 +24,10 @@
 	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0, 5, 4.9);
 }
 
+#btnChart {
+	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0, 5, 5);
+}
+
 #txtList:focused {
 	-fx-border-color: skyblue;
 	-fx-background-color: lemonchiffon;
@@ -31,7 +35,7 @@
 
 #txtPrice:focused {
 	-fx-border-color: skyblue;
-	-fx-background-color: lavenderblush;
+	-fx-background-color: lemonchiffon;
 }
 
 #selectDate:focused {

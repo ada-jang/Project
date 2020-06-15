@@ -24,19 +24,19 @@
             </Label>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="67.0" layoutY="69.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+      <HBox alignment="CENTER" layoutX="67.0" layoutY="69.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0" style="-fx-background-color: grey;">
          <children>
             <Label fx:id="list" styleClass="label" text="목록" />
             <TextField fx:id="txtList" prefHeight="23.0" prefWidth="193.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="65.0" layoutY="130.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+      <HBox alignment="CENTER" layoutX="67.0" layoutY="130.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0" style="-fx-background-color: grey;">
          <children>
             <Label fx:id="price" styleClass="label" text="가격" />
             <TextField fx:id="txtPrice" prefHeight="23.0" prefWidth="193.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="65.0" layoutY="188.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+      <HBox alignment="CENTER" layoutX="67.0" layoutY="188.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0" style="-fx-background-color: grey;">
          <children>
             <Label fx:id="date" styleClass="label" text="날짜" />
             <DatePicker fx:id="selectDate" prefHeight="23.0" prefWidth="193.0" />
