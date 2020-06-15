@@ -24,19 +24,19 @@
             </Label>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="67.0" layoutY="69.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+      <HBox alignment="CENTER" layoutX="120.0" layoutY="69.0" prefHeight="40.0" prefWidth="251.0" spacing="20.0" style="-fx-background-color: grey;">
          <children>
             <Label fx:id="list" styleClass="label" text="목록" />
             <TextField fx:id="txtList" prefHeight="23.0" prefWidth="193.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="65.0" layoutY="130.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+      <HBox alignment="CENTER" layoutX="120.0" layoutY="130.0" prefHeight="40.0" prefWidth="251.0" spacing="20.0" style="-fx-background-color: grey;">
          <children>
             <Label fx:id="price" styleClass="label" text="가격" />
             <TextField fx:id="txtPrice" prefHeight="23.0" prefWidth="193.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="65.0" layoutY="188.0" prefHeight="40.0" prefWidth="360.0" spacing="45.0">
+      <HBox alignment="CENTER" layoutX="120.0" layoutY="188.0" prefHeight="40.0" prefWidth="251.0" spacing="20.0" style="-fx-background-color: grey;">
          <children>
             <Label fx:id="date" styleClass="label" text="날짜" />
             <DatePicker fx:id="selectDate" prefHeight="23.0" prefWidth="193.0" />
@@ -45,12 +45,20 @@
       <Separator layoutX="44.0" layoutY="256.0" prefHeight="2.0" prefWidth="406.0" />
       <HBox alignment="CENTER" layoutX="33.0" layoutY="256.0" prefHeight="111.0" prefWidth="423.0" spacing="40.0">
          <children>
-            <Button fx:id="btnInput" onAction="#handleBtnInputAction" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="입력" />
-            <Button fx:id="btnEnd" onAction="#handleBtnListAction" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="종료" />
-            <Button fx:id="btnList" onAction="#handleBtnEndAction" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="리스트" />
-            <Button fx:id="btnChart" mnemonicParsing="false" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;">
+            <Button fx:id="btnInput" onAction="#handleBtnInputAction" prefHeight="47.0" prefWidth="85.0" style="-fx-background-color: white;" text="입력" />
+            <Button fx:id="btnEnd" onAction="#handleBtnListAction" prefHeight="47.0" prefWidth="85.0" style="-fx-background-color: white;" text="종료" />
+            <Button fx:id="btnList" onAction="#handleBtnEndAction" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: white;" text="리스트">
             	<graphic>
-            		<ImageView fitHeight="49.0" fitWidth="61.0">
+            		<ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+               			<Image url="@images/list.png" />
+               </image>
+            		</ImageView>
+            	</graphic>
+            </Button>
+            <Button fx:id="btnChart" mnemonicParsing="false" prefHeight="47.0" prefWidth="85.0" style="-fx-background-color: white;" text="차트">
+            	<graphic>
+            		<ImageView fitHeight="25.0" fitWidth="25.0">
                <image>
                			<Image url="@images/chart2.png" />
                </image>
