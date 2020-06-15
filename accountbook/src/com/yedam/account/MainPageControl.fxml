@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="375.0" prefWidth="489.0" stylesheets="@InputControl.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-		fx:controller="com.yedam.account.AccountController">
+<AnchorPane fx:id="anchorPane" prefHeight="375.0" prefWidth="489.0" stylesheets="@MainPageControl.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.account.AccountController">
    <children>
       <VBox fx:id="root" alignment="CENTER" prefHeight="69.0" prefWidth="489.0">
          <children>
@@ -43,10 +45,18 @@
       <Separator layoutX="44.0" layoutY="256.0" prefHeight="2.0" prefWidth="406.0" />
       <HBox alignment="CENTER" layoutX="33.0" layoutY="256.0" prefHeight="111.0" prefWidth="423.0" spacing="40.0">
          <children>
-            <Button fx:id="btnInput" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="입력" onAction="#handleBtnInputAction"/>
-            <Button fx:id="btnEnd" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="종료" onAction="#handleBtnListAction"/>
-            <Button fx:id="btnList" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="리스트" onAction="#handleBtnEndAction"/>
-            <Button fx:id="btnChart" mnemonicParsing="false" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="차트" />
+            <Button fx:id="btnInput" onAction="#handleBtnInputAction" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="입력" />
+            <Button fx:id="btnEnd" onAction="#handleBtnListAction" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="종료" />
+            <Button fx:id="btnList" onAction="#handleBtnEndAction" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white;" text="리스트" />
+            <Button fx:id="btnChart" mnemonicParsing="false" prefHeight="47.0" prefWidth="71.0" style="-fx-background-color: white; -fx-background-image: images/chart.jpg;">
+            	<graphic>
+            		<ImageView fitHeight="49.0" fitWidth="61.0">
+               <image>
+               			<Image url="@images/chart2.png" />
+               </image>
+            		</ImageView>
+            	</graphic>
+            </Button>
          </children>
       </HBox>
    </children>
