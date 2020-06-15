@@ -1,15 +1,18 @@
 package com.yedam.account;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +21,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,13 +37,16 @@ public class AccountController implements Initializable {
 	@FXML
 	Button btnInput, btnList, btnEnd;
 	@FXML
-	TableView<Board> tableView;
-
+	Statement stmt = null;
 	Connection conn;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	ObservableList<Board> accountList;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		accountList = FXCollections.observableArrayList();
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, "hr", "hr");
@@ -83,21 +91,34 @@ public class AccountController implements Initializable {
 			stageList.setScene(scene);
 			stageList.setResizable(false);
 			stageList.show();
-		} catch (IOException e1) {
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String sql = "select * from accountbook";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, "hr", "hr");
+			System.out.println("디비 리스트 접속");
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+
+				Board accountlist = new Board(rs.getString("list"), rs.getInt("price"), rs.getString("exit_date"));
+				accountList.add(accountlist);
+				
+			}
+//			System.out.println(accountList.get(0).getList());
+			TableView<Board> TableColumn = (TableView) parent.lookup("#TableColumn");
+			TableColumn<Board, ?> tcexitDate = TableColumn.getColumns().get(0);
+			tcexitDate.setCellValueFactory(new PropertyValueFactory("exitDate"));
+			TableColumn<Board, ?> tclist = TableColumn.getColumns().get(1);
+			tclist.setCellValueFactory(new PropertyValueFactory("list"));
+			TableColumn<Board, ?> tcprice = TableColumn.getColumns().get(2);
+			tcprice.setCellValueFactory(new PropertyValueFactory("price"));
+			TableColumn.setItems(accountList);
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+
 		
-		
-		String sql = "select * from accountbook";
-		
-//		TableColumn<Board, ?> tcexitDate = tableView.getColumns().get(0);
-//		tcexitDate.setCellValueFactory(new PropertyValueFactory("exitDate"));
-//		TableColumn<Board, ?> tclist = tableView.getColumns().get(1);
-//		tclist.setCellValueFactory(new PropertyValueFactory("list"));
-//		TableColumn<Board, ?> tcprice = tableView.getColumns().get(2);
-//		tcprice.setCellValueFactory(new PropertyValueFactory("price"));
-//		tableView.setItems(null);
-		
+
 	} // end of list
 
 	public void handleBtnChartAction(ActionEvent e) {

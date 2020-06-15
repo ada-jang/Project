@@ -19,7 +19,7 @@
       </HBox>
    </bottom>
    <center>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView id="TableColumn" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn prefWidth="104.0" text="날짜" />
           <TableColumn prefWidth="104.0" text="목록" />
