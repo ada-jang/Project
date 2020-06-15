@@ -113,8 +113,8 @@ public class AccountController implements Initializable {
 			TableColumn<Board, ?> tcprice = TableColumn.getColumns().get(2);
 			tcprice.setCellValueFactory(new PropertyValueFactory("price"));
 			TableColumn.setItems(accountList);
-		} catch (Exception e1) {
-			e1.printStackTrace();
+		} catch (Exception e2) {
+			e2.printStackTrace();
 		}
 
 		
