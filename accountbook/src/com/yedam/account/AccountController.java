@@ -84,7 +84,7 @@ public class AccountController implements Initializable {
 		Stage stageList = new Stage(StageStyle.DECORATED);
 		stageList.initModality(Modality.WINDOW_MODAL);
 		stageList.initOwner(btnList.getScene().getWindow());
-
+			
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("ListControl.fxml"));
 			Scene scene = new Scene(parent);
@@ -99,7 +99,7 @@ public class AccountController implements Initializable {
 			pst = conn.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-
+				
 				Board accountlist = new Board(rs.getString("list"), rs.getInt("price"), rs.getString("exit_date"));
 				data.add(accountlist);
 				
