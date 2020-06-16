@@ -25,6 +25,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -35,7 +36,7 @@ public class AccountController implements Initializable {
 	@FXML
 	TextField txtPrice, txtList;
 	@FXML
-	Button btnInput, btnList, btnEnd;
+	Button btnInput, btnList, btnModf, btnComp, btnEnd;
 	@FXML
 	Statement stmt = null;
 	Connection conn;
@@ -84,7 +85,7 @@ public class AccountController implements Initializable {
 		Stage stageList = new Stage(StageStyle.DECORATED);
 		stageList.initModality(Modality.WINDOW_MODAL);
 		stageList.initOwner(btnList.getScene().getWindow());
-			
+
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("ListControl.fxml"));
 			Scene scene = new Scene(parent);
@@ -99,27 +100,36 @@ public class AccountController implements Initializable {
 			pst = conn.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				
+
 				Board accountlist = new Board(rs.getString("list"), rs.getInt("price"), rs.getString("exit_date"));
-				data.add(accountlist);
 				
+				TableView<Board> TableColumn = (TableView) parent.lookup("#TableColumn");
+				TableColumn<Board, ?> tcexitDate = TableColumn.getColumns().get(0);
+				tcexitDate.setCellValueFactory(new PropertyValueFactory("exitDate"));
+				TableColumn<Board, ?> tclist = TableColumn.getColumns().get(1);
+				tclist.setCellValueFactory(new PropertyValueFactory("list"));
+				TableColumn<Board, ?> tcprice = TableColumn.getColumns().get(2);
+				tcprice.setCellValueFactory(new PropertyValueFactory("price"));
+				data.add(accountlist);
+				TableColumn.setItems(data);
 			}
+			
 //			System.out.println(accountList.get(0).getList());
-			TableView<Board> TableColumn = (TableView) parent.lookup("#TableColumn");
-			TableColumn<Board, ?> tcexitDate = TableColumn.getColumns().get(0);
-			tcexitDate.setCellValueFactory(new PropertyValueFactory("exitDate"));
-			TableColumn<Board, ?> tclist = TableColumn.getColumns().get(1);
-			tclist.setCellValueFactory(new PropertyValueFactory("list"));
-			TableColumn<Board, ?> tcprice = TableColumn.getColumns().get(2);
-			tcprice.setCellValueFactory(new PropertyValueFactory("price"));
-			TableColumn.setItems(data);
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}
-
-		
-
+			
 	} // end of list
+
+	public void handleEvents(MouseEvent event) {
+		Button btn = (Button) event.getSource();
+		if (btn.getId().equals("btnComp")) {
+			Stage stage = (Stage) btn.getScene().getWindow();
+			stage.close();
+		}else {
+			
+		}
+	}
 
 	public void handleBtnChartAction(ActionEvent e) {
 
